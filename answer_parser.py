@@ -1,4 +1,3 @@
-from record import Record
 from default_parser import Parser
 
 

@@ -1,7 +1,8 @@
 import binascii
-from socket import *
 from default_parser import Parser
 from answer_parser import AnswerParser
+from socket import *
+from time import time
 
 
 class RequestParser:
@@ -47,7 +48,7 @@ class RequestParser:
         result = []
         count = 0
         for element in data:
-            if element.can_live():
+            if element.death_time > round(time()):
                 result.append(element.__str__())
                 count += 1
         return "".join(result), count
@@ -56,7 +57,7 @@ class RequestParser:
     def make_udp_request(request):
         message = request.replace(" ", "").replace("\n", "")
         sock = socket(AF_INET, SOCK_DGRAM)
-        address = "208.67.222.222", 53
+        address = "8.8.8.8", 53
         try:
             sock.sendto(binascii.unhexlify(message), address)
             response, _ = sock.recvfrom(4096)

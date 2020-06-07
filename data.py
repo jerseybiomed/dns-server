@@ -1,7 +1,7 @@
 from time import time
 
 
-class Record:
+class Data:
     def __init__(self, _type, ttl, data):
         self.name = "c00c"
         self._type = _type

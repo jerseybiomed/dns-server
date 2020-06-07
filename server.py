@@ -1,6 +1,5 @@
 import pickle
 from logger import Log
-from time import *
 from request_parser import *
 
 

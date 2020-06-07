@@ -1,4 +1,4 @@
-from record import Record
+from data import *
 
 
 class Log:
@@ -8,7 +8,7 @@ class Log:
     def get(self, key: tuple):
         return self.cache.get(key, None)
 
-    def put(self, key: tuple, value: Record):
+    def put(self, key: tuple, value: Data):
         if self.cache.get(key, None) is None:
             self.cache[key] = [value]
         else:
