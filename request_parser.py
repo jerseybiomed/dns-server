@@ -56,7 +56,7 @@ class RequestParser:
     def make_udp_request(request):
         message = request.replace(" ", "").replace("\n", "")
         sock = socket(AF_INET, SOCK_DGRAM)
-        address = "8.8.8.8", 53
+        address = "208.67.222.222", 53
         try:
             sock.sendto(binascii.unhexlify(message), address)
             response, _ = sock.recvfrom(4096)
