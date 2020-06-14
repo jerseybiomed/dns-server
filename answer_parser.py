@@ -1,4 +1,5 @@
 from default_parser import Parser
+from data import Data
 
 
 class AnswerParser:
@@ -33,9 +34,9 @@ class AnswerParser:
             ttl = int(answer[start_pos + 12:start_pos + 16], 16)
             rd_length = int(answer[start_pos + 16:start_pos + 20], 16) * 2
             data = answer[start_pos + 16:start_pos + 20 + rd_length]
-            answ = Record(_type, ttl, data)
+            answ = Data(_type, ttl, data)
             storage.put((name, _type), answ)
-            answers.append(Record(_type, ttl, data))
+            answers.append(Data(_type, ttl, data))
             start_pos += 24 + rd_length
             j -= 1
         j = authority_rrs
@@ -53,7 +54,7 @@ class AnswerParser:
             ttl = int(answer[start_pos + 12:start_pos + 16], 16)
             data_length = int(answer[start_pos + 16:start_pos + 20], 16) * 2
             data = answer[start_pos + 16:start_pos + 20 + data_length]
-            ans = Record(_type, ttl, data)
+            ans = Data(_type, ttl, data)
             storage.put((name, _type), ans)
             j -= 1
 
@@ -67,7 +68,7 @@ class AnswerParser:
             ttl = int(answer[start_pos + 8:start_pos + 16], 16)
             data_length = int(answer[start_pos + 16:start_pos + 20], 16) * 2
             data = answer[start_pos + 16:start_pos + 20 + data_length]
-            ar = Record(_type, ttl, data)
+            ar = Data(_type, ttl, data)
             storage.put((name, _type), ar)
             start_pos += 24 + data_length
             j -= 1
